@@ -3,14 +3,14 @@ import React from 'react';
 import { View, StatusBar } from 'react-native';
 
 import Routes from './routes';
-import AppContainer from './hooks';
+import AppProvider from './hooks';
 
 const App: React.FC = () => (
   <View style={{ backgroundColor: '#312e38', flex: 1 }}>
-    <AppContainer>
+    <AppProvider>
       <StatusBar barStyle="light-content" backgroundColor="#312e38" />
       <Routes />
-    </AppContainer>
+    </AppProvider>
   </View>
 );
 

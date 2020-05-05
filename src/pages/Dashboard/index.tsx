@@ -28,6 +28,14 @@ interface Product {
   price: number;
 }
 
+interface ProductDTO {
+  id: string;
+  title: string;
+  image_url: string;
+  price: number;
+  quantity: number;
+}
+
 const Dashboard: React.FC = () => {
   const { addToCart } = useCart();
 
@@ -35,14 +43,16 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     async function loadProducts(): Promise<void> {
-      // TODO
+      const allProducts: Product[] = (await api.get('/products')).data;
+
+      setProducts(allProducts);
     }
 
     loadProducts();
   }, []);
 
-  function handleAddToCart(item: Product): void {
-    // TODO
+  function handleAddToCart(item: ProductDTO): void {
+    addToCart(item);
   }
 
   return (
